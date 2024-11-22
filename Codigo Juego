@@ -1,0 +1,41 @@
+import random
+
+def mostrar_bienvenida():
+    print("Bienvenido al juego de aventura!")
+    print("Para derrotar a los monstruos, debes aplicar un impulso suficiente y realizar suficiente trabajo con tu ataque.")
+    print("El impulso se calcula como la fuerza aplicada multiplicada por el tiempo del ataque (impulso = fuerza * tiempo).")
+    print("El trabajo se calcula como la fuerza aplicada multiplicada por la distancia movida (trabajo = fuerza * distancia).")
+    print("Buena suerte!")
+
+def solicitar_datos():
+    fuerza = float(input("Ingresa la fuerza de tu ataque en Newtons (N): "))
+    tiempo = float(input("Ingresa la duración de tu ataque en segundos (s): "))
+    distancia = float(input("Ingresa la distancia que se movió el objeto en metros (m): "))
+    return fuerza, tiempo, distancia
+
+def calcular_impulso(fuerza, tiempo):
+    return fuerza * tiempo
+
+def calcular_trabajo(fuerza, distancia):
+    return fuerza * distancia
+
+def evaluar_ataque(impulso, trabajo, derrotar_impulso, derrotar_trabajo):
+    if impulso >= derrotar_impulso and trabajo >= derrotar_trabajo:
+        print("Felicidades! Has derrotado al monstruo!")
+    else:
+        print("Lo siento, el monstruo no ha sido derrotado. Intentalo de nuevo!")
+
+def main():
+    mostrar_bienvenida()
+    derrotar_impulso = random.randint(20, 50)
+    derrotar_trabajo = random.randint(10,30)
+    print(f"El impulso requerido para este monstruo es: {derrotar_impulso} Ns")
+    print(f"El trabajo requerido para este monstruo es: {derrotar_trabajo} J")
+    fuerza, tiempo, distancia = solicitar_datos()
+    impulso = calcular_impulso(fuerza, tiempo)
+    trabajo = calcular_trabajo(fuerza, distancia)
+    print(f"El impulso aplicado fue: {impulso} Ns")
+    print(f"El trabajo realizado fue: {trabajo} J")
+    evaluar_ataque(impulso, trabajo, derrotar_impulso, derrotar_trabajo)   
+
+main()       
